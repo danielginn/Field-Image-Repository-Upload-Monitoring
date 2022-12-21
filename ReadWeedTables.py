@@ -116,8 +116,8 @@ for TXupload in TXuploads:
             species_count[str(MasterRefIDcropmatch['CropName'])] = np.array([0, 0, 0])
             species_count[str(MasterRefIDcropmatch['CropName'])][row] += 1
 
-    #if len(list(MasterRefIDimagesmatchs)) != 20:
-    #    print(TXupload['RowKey'])
+    if len(list(MasterRefIDimagesmatchs)) != 20:
+        print(TXupload['RowKey'])
 
 #print(species_count)
 for species in species_count.keys():
