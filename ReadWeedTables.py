@@ -5,6 +5,10 @@ import os
 
 load_dotenv()
 account_connection_string = os.getenv("STORAGE_CONNECTION_STRING") or ""
+if account_connection_string == "":
+    print("You need to create a .env file with 'STORAGE_CONNECTION_STRING=' followed by a SAS key")
+    exit()
+
 # Split into key=value pairs removing empties, then split the pairs into a dict
 config = dict(s.split('=', 1) for s in account_connection_string.split(';') if s)
 # Authentication
