@@ -1,2 +1,1 @@
-azure_storage_connection_string: 'DefaultEndpointsProtocol=https;AccountName=weedsimagerepo;AccountKey=1G8wi6miOX5QWeZKcr56Uk+hUzl9P8N2r88NEh72l7VxnHI2eGA0J6A9AyMC3kqKqUwfa7Z/0RoP+ASt7ahDLg==;EndpointSuffix=core.windows.net'
 container: 'weedsimagerepo'

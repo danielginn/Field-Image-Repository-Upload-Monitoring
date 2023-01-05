@@ -3,6 +3,8 @@ import yaml
 from azure.storage.blob import ContainerClient
 from azure.storage.table import TableService
 import numpy as np
+from dotenv import load_dotenv
+import os
 
 class InspectAzureWeedsImageRepo:
     def __init__(self, imageList):
@@ -26,8 +28,10 @@ def connect_to_azure_container(connection_string, container_name):
 def connect_to_azure_tables(connection_string):
     return TableService(connection_string=connection_string)
 
+load_dotenv()
+account_connection_string = os.getenv("STORAGE_CONNECTION_STRING") or ""
 config = load_config()
-container = connect_to_azure_container(config["azure_storage_connection_string"], config["container"])
+container = connect_to_azure_container(account_connection_string, config["container"])
 imageList = list(container.list_blob_names())
 tables = connect_to_azure_tables(config["azure_storage_connection_string"])
 statePlants = tables.query_entities('wirmastermeta', filter="UsState eq 'NC'")
