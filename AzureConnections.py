@@ -30,6 +30,10 @@ def connect_to_azure_tables(connection_string):
 
 load_dotenv()
 account_connection_string = os.getenv("STORAGE_CONNECTION_STRING") or ""
+if account_connection_string == "":
+    print("You need to create a .env file with 'STORAGE_CONNECTION_STRING=' followed by a SAS key")
+    exit()
+
 config = load_config()
 container = connect_to_azure_container(account_connection_string, config["container"])
 imageList = list(container.list_blob_names())
