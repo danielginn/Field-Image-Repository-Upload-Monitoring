@@ -1,8 +1,10 @@
-import config
 from tablestorageaccount import TableStorageAccount
 import numpy as np
+from dotenv import load_dotenv
+import os
 
-account_connection_string = config.STORAGE_CONNECTION_STRING
+load_dotenv()
+account_connection_string = os.getenv("STORAGE_CONNECTION_STRING") or ""
 # Split into key=value pairs removing empties, then split the pairs into a dict
 config = dict(s.split('=', 1) for s in account_connection_string.split(';') if s)
 # Authentication
